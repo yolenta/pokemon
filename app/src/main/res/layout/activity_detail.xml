@@ -58,7 +58,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progress_top"
-            app:layout_constraintVertical_bias="0.735"
+            app:layout_constraintVertical_bias="0.283"
             app:loadImage="@{pokemon.urlToImage}"
             app:srcCompat="@drawable/placeholder" />
 
@@ -84,47 +84,50 @@
             app:layout_constraintTop_toTopOf="@+id/bt_catch"
             app:layout_constraintVertical_bias="1.0" />
 
-        <EditText
-            android:hint="@string/nick_name"
-            android:visibility="invisible"
-            android:id="@+id/et_nick_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/iv_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-        <TextView
-            android:visibility="invisible"
-            android:id="@+id/bt_nick_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/et_nick_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
-            app:layout_constraintStart_toEndOf="@+id/et_nick_name"
-            app:layout_constraintTop_toTopOf="@+id/et_nick_name"
-            app:layout_constraintVertical_bias="1.0" />
-
 
         <ScrollView
-            android:layout_width="353dp"
-            android:layout_height="215dp"
+            android:layout_width="344dp"
+            android:layout_height="295dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_image"
-            app:layout_constraintVertical_bias="0.109">
+            app:layout_constraintVertical_bias="0.191">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/ly_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_nick_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nick_name"
+                        android:layout_marginBottom="10dp"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:layout_marginEnd="5dp"
+                        android:padding="5dp"
+                        android:background="@color/purple_200"
+                        android:id="@+id/bt_nick_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="TextView"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/tv_detail"

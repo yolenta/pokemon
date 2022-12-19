@@ -56,7 +56,7 @@ class DetailFromMineActivity : AppCompatActivity() {
 
             viewModel.find(it)
             bindingToolbar.textTitle.text = viewModel.title
-            binding.tvName.text = detail.name
+            binding.tvName.text = "My "+detail.name
             binding.pokemon=detail
             binding.progressTop.visibility = View.GONE
             val btCatchAction= binding.btCatch
@@ -94,6 +94,7 @@ class DetailFromMineActivity : AppCompatActivity() {
                 else {
                     etNickName.visibility = View.VISIBLE
                     btNickName.visibility = View.VISIBLE
+                    binding.lyNickname.visibility =View.VISIBLE
                     if (detail.nickName.isNullOrBlank()) {
                         btNickName.text = "save"
                     } else {
