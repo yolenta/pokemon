@@ -18,4 +18,5 @@ data class PokeModel(
     val url:String,
     var urlToImage:String? = "",
     var nickName:String? = "",
+    var id:String,
 ) : Serializable

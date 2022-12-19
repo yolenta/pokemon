@@ -9,7 +9,7 @@ import id.jelistina.myapplication.util.SourceConverter
 
 @Database(
     entities = [PokeModel::class],
-version =1,
+version = 2,
     exportSchema = false
 )
 

@@ -2,6 +2,7 @@ package id.jelistina.myapplication.source.pokemon
 
 import id.jelistina.myapplication.source.network.ApiClient
 import org.koin.dsl.module
+import timber.log.Timber
 
 val repositoryModule = module{
     factory { PokemonRepository(get(),get()) }
@@ -15,6 +16,10 @@ class PokemonRepository(
     ):PokemonModel{
         return api.fetchPokemon()
     }
+    suspend fun fetchDeatil(id: String
+    ):PokemonDetailModel{
+        return api.fetchPokemonDetail(id)
+    }
 
     suspend fun find(pokeModel: PokeModel) = db.find(pokeModel.url)
 
@@ -27,4 +32,5 @@ class PokemonRepository(
     }
 
     suspend fun update(pokeModel: PokeModel) = db.update(pokeModel.nickName,pokeModel.url)
+
 }

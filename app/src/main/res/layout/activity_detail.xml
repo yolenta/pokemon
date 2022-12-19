@@ -66,8 +66,8 @@
             android:id="@+id/bt_catch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="76dp"
-            android:layout_marginTop="380dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="608dp"
             android:text="Catch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
@@ -109,6 +109,31 @@
             app:layout_constraintStart_toEndOf="@+id/et_nick_name"
             app:layout_constraintTop_toTopOf="@+id/et_nick_name"
             app:layout_constraintVertical_bias="1.0" />
+
+
+        <ScrollView
+            android:layout_width="353dp"
+            android:layout_height="215dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_image"
+            app:layout_constraintVertical_bias="0.109">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text=" text" />
+            </LinearLayout>
+        </ScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

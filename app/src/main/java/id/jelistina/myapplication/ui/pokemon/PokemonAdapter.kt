@@ -48,6 +48,7 @@ class PokemonAdapter(
         for (item in pokemonList) {
             val id = item.url.toString().substringAfter("https://pokeapi.co/api/v2/pokemon/").substringBefore("/")
             item.urlToImage="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id+".png"
+            item.id=id
         }
         notifyDataSetChanged()
     }

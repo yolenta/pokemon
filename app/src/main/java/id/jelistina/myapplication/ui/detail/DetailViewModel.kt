@@ -4,9 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.jelistina.myapplication.source.pokemon.PokeModel
+import id.jelistina.myapplication.source.pokemon.PokemonDetailModel
+import id.jelistina.myapplication.source.pokemon.PokemonModel
 import id.jelistina.myapplication.source.pokemon.PokemonRepository
 import kotlinx.coroutines.launch
 import org.koin.dsl.module
+import timber.log.Timber
 
 val detailViewModel = module {
     factory { DetailViewModel(get()) }
@@ -17,6 +20,13 @@ class DetailViewModel(
 ) : ViewModel() {
 
     val isCatch by lazy { MutableLiveData<Int>(0) }
+    val message by lazy {MutableLiveData<String>()}
+    val loading by lazy {MutableLiveData<Boolean>()}
+    val pokemonDetail by lazy {MutableLiveData<PokemonDetailModel>()}
+    val pokeModel by lazy {MutableLiveData<PokeModel>()}
+    init {
+        message.value = ""
+    }
 
     var title = "Detail"
     fun find(pokeModel: PokeModel){
@@ -43,4 +53,17 @@ class DetailViewModel(
         }
     }
 
+    fun fetch(id:String){
+        viewModelScope.launch {
+            try {
+                Timber.e("disini")
+                val respone = repository.fetchDeatil(id)
+                Timber.e(respone.toString()+" | "+respone)
+                pokemonDetail.value = respone
+                loading.value=false
+            }catch (e :Exception){
+                message.value= "Terjadi Kesalahan"
+            }
+        }
+    }
 }
