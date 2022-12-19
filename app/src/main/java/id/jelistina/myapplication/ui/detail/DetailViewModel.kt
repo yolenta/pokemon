@@ -17,6 +17,7 @@ class DetailViewModel(
 ) : ViewModel() {
 
     val isCatch by lazy { MutableLiveData<Int>(0) }
+
     var title = "Detail"
     fun find(pokeModel: PokeModel){
         viewModelScope.launch {
@@ -31,9 +32,14 @@ class DetailViewModel(
                 repository.save(pokeModel)
             }
             else {
-                pokeModel.nickName=""
                 repository.remove(pokeModel)}
             find( pokeModel )
+        }
+    }
+
+    fun catchNickName (pokeModel: PokeModel) {
+        viewModelScope.launch {
+            repository.save(pokeModel)
         }
     }
 

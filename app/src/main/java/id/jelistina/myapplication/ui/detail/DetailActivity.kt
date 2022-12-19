@@ -12,8 +12,10 @@ import id.jelistina.myapplication.R
 import id.jelistina.myapplication.databinding.ActivityDetailBinding
 import id.jelistina.myapplication.databinding.CustomToolbarBinding
 import id.jelistina.myapplication.source.pokemon.PokeModel
+import id.jelistina.myapplication.ui.mine.MineViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
+import timber.log.Timber
 
 val detailModule = module {
     factory { DetailActivity() }
@@ -23,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
     private lateinit var bindingToolbar : CustomToolbarBinding
     private val viewModel: DetailViewModel by viewModel()
+    private val viewModelMine: MineViewModel by viewModel()
     private val detail by lazy { intent.getSerializableExtra("detail") as PokeModel }
     val nickName by lazy { MutableLiveData<String>("") }
 
@@ -65,6 +68,9 @@ class DetailActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext,"Release Success", Toast.LENGTH_LONG).show()
             }
 
+            val etNickName = binding.etNickName
+            val btNickName = binding.btNickName
+            etNickName.setText(detail.nickName)
             viewModel.isCatch.observe(this,{
                 if(it==0) {
                     binding.btCatch.isEnabled = true
@@ -73,6 +79,35 @@ class DetailActivity : AppCompatActivity() {
                     binding.btRelease.setBackgroundColor(R.color.purple_500)
                 }
                 else {
+                    etNickName.visibility = View.VISIBLE
+                    btNickName.visibility = View.VISIBLE
+                    if (detail.nickName.isNullOrBlank()) {
+                        btNickName.text = "save"
+                    } else {
+                        btNickName.text = "edit"
+                    }
+                    btNickName.setOnClickListener() {
+                        if(etNickName.text.isNullOrBlank()) {
+                            Toast.makeText(
+                                applicationContext,
+                                "The nick name field is required",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }else {
+                            detail.nickName = etNickName.text.toString()
+                            viewModel.catchNickName(
+                                detail
+                            )
+                            Timber.e(detail.toString())
+                            viewModelMine
+                            Toast.makeText(
+                                applicationContext,
+                                "The nick name was saved!",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                        }
+                    }
                     binding.btCatch.isEnabled = false
                     binding.btCatch.setBackgroundColor(R.color.purple_500)
                     binding.btRelease.isEnabled = true
