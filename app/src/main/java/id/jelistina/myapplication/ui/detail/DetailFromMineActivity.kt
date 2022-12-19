@@ -43,7 +43,7 @@ class DetailFromMineActivity : AppCompatActivity() {
                 if(it.moves.indexOf(i)==(it.moves.size-1)){
                     koma="."
                 }
-                textmoves+= it.moves.get(it.moves.indexOf(i)).move.name+koma
+                textmoves+= it.moves.get(it.moves.indexOf(i)).move.name+koma+" "
             }
             binding.tvDetail.setText(
                 "Name :"+it.name+"\n"+
