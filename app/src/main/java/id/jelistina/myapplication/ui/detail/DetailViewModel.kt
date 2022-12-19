@@ -41,6 +41,7 @@ class DetailViewModel(
                 repository.save(pokeModel)
             }
             else {
+                pokeModel.nickName=""
                 repository.remove(pokeModel)}
             find( pokeModel )
         }

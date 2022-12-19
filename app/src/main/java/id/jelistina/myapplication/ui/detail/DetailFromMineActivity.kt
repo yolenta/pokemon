@@ -79,6 +79,8 @@ class DetailFromMineActivity : AppCompatActivity() {
                     detail
                 )
                 Toast.makeText(applicationContext,"Release Success", Toast.LENGTH_LONG).show()
+                binding.etNickName.setText("")
+                binding.lyNickname.visibility =View.INVISIBLE
             }
 
             val etNickName = binding.etNickName
