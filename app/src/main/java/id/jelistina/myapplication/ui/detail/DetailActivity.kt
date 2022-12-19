@@ -38,8 +38,12 @@ class DetailActivity : AppCompatActivity() {
         viewModel.fetch(detail.id)
         viewModel.pokemonDetail.observe(this,{
             var textmoves=""
+            var koma=","
             for (i in it.moves) {
-                textmoves+= it.moves.get(it.moves.indexOf(i)).move.name+", "
+                if(it.moves.indexOf(i)==(it.moves.size-1)){
+                    koma="."
+                }
+                textmoves+= it.moves.get(it.moves.indexOf(i)).move.name+koma
             }
             binding.tvDetail.setText(
                 "Name :"+it.name+"\n"+
@@ -47,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
                         "Base experience :"+it.base_experience+"\n"+
                         "Height :"+it.height+"\n"+
                         "Species : "+it.species.name+"\n"+
-                        "Moves : "+textmoves
+                        "Moves : \n"+textmoves
             )
 
         })
