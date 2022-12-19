@@ -7,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import id.jelistina.myapplication.databinding.AdapterPokemonBinding
 import id.jelistina.myapplication.source.pokemon.PokeModel
-import timber.log.Timber
-
 class PokemonAdapter(
     val pokemonList: ArrayList<PokeModel>,
     var listener: OnAdapterListener,

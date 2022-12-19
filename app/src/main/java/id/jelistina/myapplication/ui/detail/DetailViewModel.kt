@@ -9,7 +9,6 @@ import id.jelistina.myapplication.source.pokemon.PokemonModel
 import id.jelistina.myapplication.source.pokemon.PokemonRepository
 import kotlinx.coroutines.launch
 import org.koin.dsl.module
-import timber.log.Timber
 
 val detailViewModel = module {
     factory { DetailViewModel(get()) }
@@ -56,9 +55,7 @@ class DetailViewModel(
     fun fetch(id:String){
         viewModelScope.launch {
             try {
-                Timber.e("disini")
                 val respone = repository.fetchDeatil(id)
-                Timber.e(respone.toString()+" | "+respone)
                 pokemonDetail.value = respone
                 loading.value=false
             }catch (e :Exception){

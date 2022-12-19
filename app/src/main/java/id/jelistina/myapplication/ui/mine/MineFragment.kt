@@ -6,16 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import id.jelistina.myapplication.R
 import id.jelistina.myapplication.databinding.CustomToolbarBinding
-import id.jelistina.myapplication.databinding.FragmentHomeBinding
 import id.jelistina.myapplication.databinding.FragmentMineBinding
 import id.jelistina.myapplication.source.pokemon.PokeModel
-import id.jelistina.myapplication.ui.detail.DetailActivity
-import id.jelistina.myapplication.ui.home.HomeViewModel
+import id.jelistina.myapplication.ui.detail.DetailFromMineActivity
 import id.jelistina.myapplication.ui.pokemon.PokemonAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class MineFragment : Fragment() {
 
@@ -47,7 +43,7 @@ class MineFragment : Fragment() {
         PokemonAdapter(arrayListOf(), object : PokemonAdapter.OnAdapterListener {
             override fun onClick(pokeModel: PokeModel) {
                 startActivity(
-                    Intent(requireActivity(), DetailActivity::class.java)
+                    Intent(requireActivity(), DetailFromMineActivity::class.java)
                         .putExtra("detail", pokeModel)
                 )
             }

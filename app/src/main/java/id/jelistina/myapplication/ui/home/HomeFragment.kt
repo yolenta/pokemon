@@ -8,10 +8,10 @@ import id.jelistina.myapplication.databinding.CustomToolbarBinding
 import id.jelistina.myapplication.databinding.FragmentHomeBinding
 import id.jelistina.myapplication.source.pokemon.PokeModel
 import id.jelistina.myapplication.ui.detail.DetailActivity
+import id.jelistina.myapplication.ui.detail.DetailFromMineActivity
 import id.jelistina.myapplication.ui.pokemon.PokemonAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
-import timber.log.Timber
 
 val homeModule = module {
     factory { HomeFragment() }
