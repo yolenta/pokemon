@@ -25,4 +25,6 @@ class PokemonRepository(
     suspend fun remove(pokeModel: PokeModel) {
         db.remove( pokeModel )
     }
+
+    suspend fun update(pokeModel: PokeModel) = db.update(pokeModel.nickName,pokeModel.url)
 }

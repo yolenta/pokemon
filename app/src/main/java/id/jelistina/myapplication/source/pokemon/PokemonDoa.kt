@@ -17,4 +17,7 @@ interface PokemonDoa {
 
     @Delete
     suspend fun remove(pokeModel: PokeModel)
+
+    @Query("UPDATE tablePokemon SET nickName=:nickNameVal WHERE url=:urlid")
+    suspend fun update(nickNameVal: String?, urlid: String)
 }

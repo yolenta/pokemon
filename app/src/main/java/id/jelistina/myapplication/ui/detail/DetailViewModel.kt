@@ -39,7 +39,7 @@ class DetailViewModel(
 
     fun catchNickName (pokeModel: PokeModel) {
         viewModelScope.launch {
-            repository.save(pokeModel)
+            repository.update(pokeModel)
         }
     }
 
